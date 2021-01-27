@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/03_library" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/04_stmt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/01_connect" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/02_errors" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/06_conn_params" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/05_null_in_result" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="recipes" />
+  </component>
+</module>
