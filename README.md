@@ -1,4 +1,7 @@
+
+
 # mysql_cook_book
+
 容器，包含mysql_cook_book的例子
 
 
@@ -24,14 +27,7 @@ virhuiai/mysql_cook_book
 
 
 ```bash
-docker run \
--e MYSQL_DATABASE=cookbook \
--e MYSQL_USER=cbuser \
--e MYSQL_PASSWORD=cbpass!  \
--e MYSQL_ROOT_PASSWORD=Passw0rd! 
---rm \
---name mysql_cook_book_tmp \
-mysql_cook_book_tmp
+docker run -e MYSQL_DATABASE=cookbook -e MYSQL_USER=cbuser -e MYSQL_PASSWORD=cbpass! -e MYSQL_ROOT_PASSWORD=Passw0rd! --rm --name mysql_cook_book_tmp -d virhuiai/mysql_cook_book:latest
 ```
 
 
@@ -91,4 +87,61 @@ WORKDIR /virhuiai/mysql_cook_book/
 
 
 
+
+# 将密码放到选项文件中
+
+
+
+```bash
+echo '' >> /etc/mysql/conf.d/mysql.cnf & \
+echo '# 通用客户端程序连接选项 ' >> /etc/mysql/conf.d/mysql.cnf & \
+echo '[client]' >> /etc/mysql/conf.d/mysql.cnf & \
+echo 'host = localhost' >> /etc/mysql/conf.d/mysql.cnf & \
+echo 'user = cbuser' >> /etc/mysql/conf.d/mysql.cnf & \
+echo 'password = cbpass!' >> /etc/mysql/conf.d/mysql.cnf & \
+echo 'database = cookbook ' >> /etc/mysql/conf.d/mysql.cnf
+```
+
+
+
+此时，输入mysql,即可以直接连上数据库：
+
+
+
+```
+# mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 5.7.33 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| cookbook   |
++------------+
+1 row in set (0.00 sec)
+
+mysql> 
+```
+
+
+
+```
+docker run -e MYSQL_DATABASE=cookbook -e MYSQL_USER=cbuser -e MYSQL_PASSWORD=cbpass! -e MYSQL_ROOT_PASSWORD=Passw0rd! --rm --name mysql_cook_book_tmp -d virhuiai/mysql_cook_book:version-mysql-cnf
+```
+
+
+
+```
+vmysql-cnf
+```
 
