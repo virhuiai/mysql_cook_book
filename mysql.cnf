@@ -1,6 +1,5 @@
-# 通用客户端程序连接选项
 [client]
-host=localhost
-user=cbuser
-password=cbpass!
-database=cookbook
+host = localhost
+user = cbuser
+password = cbpass!
+database = cookbook
